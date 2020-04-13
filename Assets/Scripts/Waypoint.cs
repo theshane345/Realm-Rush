@@ -5,11 +5,13 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false;
-
+    public bool isPlaceable = true;
     public Waypoint exploredFrom;
 
     
     const int GridSize = 10;
+
+
     public int GetGridSize() 
     {
         return GridSize;
@@ -23,10 +25,21 @@ public class Waypoint : MonoBehaviour
     {
         //setTopColor(ExploredColor);
     }
-    public void setTopColor(Color color) 
+
+    void OnMouseOver()
     {
-        MeshRenderer topMeshRen = transform.Find("top").GetComponent<MeshRenderer>();
-        topMeshRen.material.color = color;
+        
+        if (Input.GetMouseButtonDown(0))
+            {
+            if (isPlaceable == true)
+                {
+                    print(gameObject.name + " clicked and placed");
+                }
+            else
+                {
+                    print("cannot place here");
+                }
+        }
+       
     }
-   
 }
