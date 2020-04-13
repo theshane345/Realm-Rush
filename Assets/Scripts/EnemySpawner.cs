@@ -10,11 +10,18 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(RepteadlySpawnEnemies());
         //sta co-routine
     }
 
-   //co routine thinggy
-        //forever 
-            //spawn an enemy
-            //wait a bit
+    
+    IEnumerator RepteadlySpawnEnemies()
+    {
+        while (true)
+        {
+            print("spawning");
+            yield return new WaitForSeconds(secondsBetweenSpawns);
+
+        }
+    }
 }
